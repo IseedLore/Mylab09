@@ -10,14 +10,16 @@ import java.nio.file.Path;
  * Application controller. Performs the I/O.
  */
 public class Controller {
-    File file;
+    
     private static final String PATH = System.getProperty("user.home")
                                         + System.getProperty("file.separator")
                                         + "output.txt";
+    File file = new File(PATH);
 
-    public void setFile(){
-        this.file = new File(PATH);
+    public void setFile(File file){
+        this.file = file;
     }
+
     public File getFile(){
         return file;
     }
@@ -30,7 +32,7 @@ public class Controller {
         try(
             PrintStream ps = new PrintStream(PATH, StandardCharsets.UTF_8)) 
             {
-                    ps.print(s);
+                ps.print(s);
             }
     }
 }
