@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
+
 
 /**
  * Application controller. Performs the I/O.
@@ -21,16 +21,16 @@ public class Controller {
     }
 
     public File getFile(){
-        return file;
+        return this.file;
     }
     
-    public Path getPathFile(){
-        return file.toPath();
+    public String getPathFile(){
+        return this.file.getPath();
     }
 
     public void write(String s) throws IOException{
         try(
-            PrintStream ps = new PrintStream(PATH, StandardCharsets.UTF_8)) 
+            PrintStream ps = new PrintStream(getPathFile(), StandardCharsets.UTF_8)) 
             {
                 ps.print(s);
             }
